@@ -1,13 +1,12 @@
 <template>
   <div class="hello">
-    {{msg}}
-    <el-button type="info">info</el-button>
-    {{getMsg}}
+    <Header></Header>
   </div>
 </template>
 
 <script>
   import {mapGetters,mapActions} from 'vuex'
+  import Header from './Header.vue'
 
   export default {
     name: 'HelloWorld',
@@ -23,31 +22,15 @@
       getMsg(){
           return this.msg;
       }
+    },
+    components : {
+        Header
     }
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- 添加scoped属性为了限制CSS只在这个组件中生效 -->
 <style scoped lang="less">
-  h1, h2 {
-    font-weight: normal;
-  }
 
-  div {
-    background: pink;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-
-  a {
-    color: #42b983;
-  }
 </style>

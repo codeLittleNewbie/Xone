@@ -6,8 +6,10 @@ import router from './router'
 import Axios from 'axios'
 import element from 'element-ui'
 import store from './store'
+
 // 样式导入
 import 'element-ui/lib/theme-default/index.css'
+
 
 // 修改vue的原型对象
 Vue.prototype.$http = Axios;

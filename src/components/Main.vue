@@ -9,11 +9,11 @@
         <div class="content">
           <xo-nav-path></xo-nav-path>
         </div>
-        <!--路由视图-->
-        <!--<router-view></router-view>-->
-        <xo-i-payment></xo-i-payment>
+        <div class="content">
+          <!--路由视图-->
+          <router-view></router-view>
+        </div>
       </el-col>
-
     </el-row>
   </div>
 </template>
@@ -24,7 +24,7 @@
   import xoHeader from './Header.vue'
   import xoNavPath from './NavPath.vue'
   import xoLeftNav from './LeftNav.vue'
-  import xoIPayment from './iPayment/Index.vue'
+  import xoIPayment from './iPayment/accountList/newAccountO/Index.vue'
 
 
   export default {

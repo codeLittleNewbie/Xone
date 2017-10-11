@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="content">
+    <div>
       <xo-count-edit></xo-count-edit>
     </div>
     <div class="contentMsg">

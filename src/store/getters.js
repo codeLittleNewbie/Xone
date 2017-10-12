@@ -8,5 +8,8 @@ export default{
   },
   getTopHeight(state){
     return state.height;
+  },
+  getNavPath(state){
+    return state.navPath;
   }
 }

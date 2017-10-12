@@ -14,6 +14,7 @@
     color: #AAAFB5;
     margin-left: 10px;
   }
+
   .header-top h3 {
     display: inline;
   }
@@ -23,7 +24,7 @@
 <template>
   <div ref="getTop" class="header-top flex_sb">
     <div class="flex_a">
-     //
+      //
     </div>
     <div>
       <span class="login">帮助</span>
@@ -41,10 +42,11 @@
 
 <script>
   import {mapActions} from 'vuex'
+
   export default {
     data() {
       return {
-        height:0
+        height: 0
       }
     },
     methods: {
@@ -57,7 +59,7 @@
     },
     created() {
     },
-    mounted(){
+    mounted() {
       let top = this.$refs.getTop;
       this.height = top.clientHeight;
       // this.$emit('topHeight',this.height)
@@ -66,9 +68,7 @@
       // this.$store.dispatch('topHeight',this.height);
       // console.log(this.topHeight);
     },
-    computed: {
-
-    }
+    computed: {}
   }
 
 </script>

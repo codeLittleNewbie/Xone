@@ -5,9 +5,11 @@
       <el-submenu index="1">
         <template slot="title">支付管理</template>
         <router-link to="/iPayment/accountList">
-          <el-menu-item index="1-1">账户列表</el-menu-item>
+          <el-menu-item index="1-1" @click="NavPathChange(['支付管理','账户列表'])">账户列表</el-menu-item>
         </router-link>
-        <router-link to="/iPayment/issuedRecord"><el-menu-item index="1-2-1">新增下发</el-menu-item></router-link>
+        <router-link to="/iPayment/issuedRecord">
+          <el-menu-item index="1-2-1" @click="NavPathChange(['支付管理','新增下发'])">新增下发</el-menu-item>
+        </router-link>
       </el-submenu>
 
       <el-submenu index="2">
@@ -99,7 +101,7 @@
   </div>
 </template>
 <script>
-  import {mapGetters} from 'vuex'
+  import {mapGetters, mapActions} from 'vuex'
 
   export default {
     data() {
@@ -150,6 +152,9 @@
       }
     },
     methods: {
+      ...mapActions([
+        'NavPathChange'
+      ]),
       handleOpen(key, keyPath) {
         console.log(key, keyPath);
       },
@@ -157,18 +162,18 @@
         console.log(key, keyPath);
       }
     },
-    mounted(){
+    mounted() {
       this.ListHeight = window.innerHeight - this.getTopHeight;
     },
     computed: {
       ...mapGetters([
-          'getTopHeight'
+        'getTopHeight'
       ])
     }
   }
 </script>
 <style>
-  #xoMenu{
+  #xoMenu {
     overflow-y: scroll;
     overflow-x: hidden;
   }

@@ -65,17 +65,26 @@
         prop="lastEdit"
         label="操作">
         <template scope="scope">
-          <el-button size="small" @click="dialogTableVisible = true">查看</el-button>
+          <el-button size="small" @click="examine(scope)">查看</el-button>
         </template>
       </el-table-column>
     </el-table>
 
-    <el-dialog title="收货地址" :visible.sync="dialogTableVisible">
-      <el-table :data="gridData">
-        <el-table-column property="date" label="日期" width="150"></el-table-column>
-        <el-table-column property="name" label="姓名" width="200"></el-table-column>
-        <el-table-column property="address" label="地址"></el-table-column>
-      </el-table>
+    <el-dialog
+      title="下发记录详情"
+      :visible.sync="dialogVisible"
+      size="tiny"
+      :before-close="handleClose">
+      <p>操作员: {{ tableData[index].lastEdit }}</p>
+      <p>添加时间: {{ tableData[index].date }}</p>
+      <p>执行时间: {{ tableData[index].executionTime}}</p>
+      <p>状态: {{ tableData[index].state}}</p>
+      <p>下发账户: {{ tableData[index].account}}</p>
+      <p>下发门店: {{ tableData[index].account}}</p>
+      <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisible = false">取 消</el-button>
+    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+  </span>
     </el-dialog>
   </div>
 
@@ -124,25 +133,8 @@
             executionTime: '2017-3-34 12:32:32',
             state: '待执行',
           }],
-        gridData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }],
-        dialogTableVisible: false,
-        dialogFormVisible: false,
+        dialogVisible: false,
+        index: 0
       }
     },
     methods: {
@@ -151,7 +143,19 @@
       },
       filterTag(value, row) {
         return row.state === value;
+      },
+      handleClose(done) {
+        done();
+      },
+      examine(scope){
+        this.index = scope.$index;
+        this.dialogVisible = true;
       }
     }
   }
 </script>
+<style scoped>
+  p{
+    padding: 10px 0 10px 10px;
+  }
+</style>

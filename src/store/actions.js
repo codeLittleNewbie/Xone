@@ -4,11 +4,10 @@
 import * as types from './type'
 
 export default {
-  // 测试方法,开发时可以删除
-  click({commit}){
-    commit(types.CLICK);
-  },
   topHeight({commit}, height){
     commit(types.TOPHEIGHT,height);
+  },
+  NavPathChange({commit},path){
+    commit(types.NAVPATHCHANGE,path);
   }
 }

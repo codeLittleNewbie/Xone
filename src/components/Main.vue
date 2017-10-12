@@ -21,9 +21,11 @@
 <script>
   import {mapGetters, mapActions} from 'vuex'
 
+  // import xoHeader from './Header.vue'
   import xoHeader from './Header.vue'
   import xoNavPath from './NavPath.vue'
   import xoLeftNav from './LeftNav.vue'
+
   import xoIPayment from './iPayment/accountList/newAccountO/Index.vue'
 
 
@@ -31,7 +33,7 @@
     name: 'Header',
     data () {
       return {
-        msg: 'Welcome to Your Vue.js App'
+        msg: 'Welcome to Your Vue.js App',
       }
     },
     computed: {

@@ -6,6 +6,7 @@ import router from './router'
 import Axios from 'axios'
 import element from 'element-ui'
 import store from './store'
+import utility from './components/utility'
 
 // 样式导入
 import 'element-ui/lib/theme-default/index.css'
@@ -18,6 +19,10 @@ Vue.prototype.$http = Axios;
 Vue.config.productionTip = false;
 
 Vue.use(element);
+
+Object.keys(utility).forEach(function (item) {
+  Vue.component(`${item}`,utility[item])
+});
 
 new Vue({
   el: '#app',

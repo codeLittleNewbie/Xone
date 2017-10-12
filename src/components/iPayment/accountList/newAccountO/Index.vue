@@ -14,13 +14,11 @@
 <script>
   import xoCountEdit from './CountEdit.vue'
   import xoDetailMsg from './DetailMsg.vue'
-  import xoPagination from './Pagination.vue'
 
   export default{
     components: {
       xoCountEdit,
       xoDetailMsg,
-      xoPagination,
     }
   }
 </script>

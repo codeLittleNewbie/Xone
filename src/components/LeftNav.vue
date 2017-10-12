@@ -1,5 +1,5 @@
 <template>
-  <div id="xoMenu">
+  <div id="xoMenu" :style="{height:ListHeight+'px'}">
     <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" theme="dark">
 
       <el-submenu index="1">
@@ -159,7 +159,8 @@
               }
             ]
           }
-        ]
+        ],
+        ListHeight: 0
       }
     },
     methods: {
@@ -169,9 +170,14 @@
       handleClose(key, keyPath) {
         console.log(key, keyPath);
       }
+    },
+    mounted(){
+      this.ListHeight = window.innerHeight - 80;
     }
   }
 </script>
 <style>
-
+  #xoMenu{
+    overflow-y: scroll;
+  }
 </style>

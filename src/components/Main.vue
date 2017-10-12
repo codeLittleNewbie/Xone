@@ -5,13 +5,15 @@
       <el-col :span="4">
         <xo-left-nav></xo-left-nav>
       </el-col>
-      <el-col :span="20">
-        <div class="content">
-          <xo-nav-path></xo-nav-path>
-        </div>
-        <div class="content">
-          <!--路由视图-->
-          <router-view></router-view>
+      <el-col :span="20" style="overflow-y: scroll">
+        <div :style="{height:ListHeight + 'px'}">
+          <div class="content">
+            <xo-nav-path></xo-nav-path>
+          </div>
+          <div class="contentMsg">
+            <!--路由视图-->
+            <router-view></router-view>
+          </div>
         </div>
       </el-col>
     </el-row>
@@ -21,23 +23,22 @@
 <script>
   import {mapGetters, mapActions} from 'vuex'
 
-  // import xoHeader from './Header.vue'
   import xoHeader from './Header.vue'
   import xoNavPath from './NavPath.vue'
   import xoLeftNav from './LeftNav.vue'
-
-  import xoIPayment from './iPayment/accountList/newAccountO/Index.vue'
-
 
   export default {
     name: 'Header',
     data () {
       return {
         msg: 'Welcome to Your Vue.js App',
+        ListHeight: 0
       }
     },
     computed: {
-      ...mapGetters([]),
+      ...mapGetters([
+          'getTopHeight'
+      ]),
       getMsg(){
         return this.msg;
       }
@@ -46,8 +47,6 @@
       xoHeader,
       xoNavPath,
       xoLeftNav,
-
-      xoIPayment
     },
     methods: {
       handleOpen(key, keyPath) {
@@ -56,6 +55,9 @@
       handleClose(key, keyPath) {
         console.log(key, keyPath);
       }
+    },
+    mounted(){
+        this.ListHeight = this.getTopHeight;
     }
   }
 </script>
@@ -65,8 +67,7 @@
   .content {
     padding: 25px;
   }
-
-  .contentMsg {
+  .contentMsg{
     padding: 0 25px 25px 25px;
   }
 </style>

@@ -25,7 +25,7 @@
         <el-button type="primary" @click="save">保存</el-button>
       </el-form-item>
       <el-form-item style="vertical-align: bottom">
-        <el-button type="primary" icon="edit">新增账号</el-button>
+        <router-link to="/iPayment/accountList/account"><el-button type="primary" icon="edit">新增账号</el-button></router-link>
       </el-form-item>
     </el-form>
   </div>

@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Main from '../components/Main.vue'
-import IPayment from '../components/iPayment/accountList/newAccountO/Index.vue'
+import IPayment from '../components/iPayment/accountList/Index.vue'
 import Login from '../components/login/Login.vue'
 import Users from '../components/user/Users.vue'
+import Account from '../components/iPayment/accountList/account/Index.vue'
+import Record from '../components/iPayment/issuedRecord/Index.vue'
 
 Vue.use(Router);
 
@@ -16,15 +18,25 @@ export default new Router({
       children:[
         {
           // 支付管理/账户列表
-          path: '/iPayment/accountList/newCount1',
-          name: '新增账户(已开户)',
-          component: IPayment
+          path: '/iPayment/accountList',
+          name: '支付管理/账户列表',
+          component: IPayment,
         },
         {
-          path: '/iPayment/accountList/newCount2',
-          name: '新增账户(开户申请)',
-          component: IPayment
+          path: '/iPayment/accountList/account',
+          component: Account
         },
+        {
+          // 支付管理/新增下发
+          path: '/iPayment/issuedRecord',
+          name: '支付管理/新增下发',
+          component: Record,
+        },
+
+
+
+
+
         {
           path: '/login',
           name: '登陆页',

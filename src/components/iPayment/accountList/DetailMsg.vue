@@ -7,56 +7,47 @@
       label="序号"
       width="65">
       <template scope="scope">
-        <span style="margin-left: 10px">{{ scope.row.count }}</span>
+        <span>{{ scope.row.count }}</span>
       </template>
     </el-table-column>
     <el-table-column
       label="账户编号"
-      width="95">
+      >
       <template scope="scope">
-        <span style="margin-left: 10px">{{ scope.row.accountNum }}</span>
+        <span>{{ scope.row.accountNum }}</span>
       </template>
     </el-table-column>
-    <!--<el-table-column
-      label="日期"
-      width="180">
-      <template scope="scope">
-        <el-icon name="time"></el-icon>
-        <span style="margin-left: 10px">{{ scope.row.date }}</span>
-      </template>
-    </el-table-column>-->
     <el-table-column
       label="账户名称"
-      width="140">
+      width="200">
       <template scope="scope">
         <el-input v-model="scope.row.account" placeholder=""></el-input>
-        <!--<span style="margin-left: 10px">{{ scope.row.date }}</span>-->
       </template>
     </el-table-column>
     <el-table-column
-      label="支付通道"
-      width="95">
+      label="支付通道">
       <template scope="scope">
-        <span style="margin-left: 10px">{{ scope.row.payment }}</span>
+        <span>{{ scope.row.payment }}</span>
       </template>
     </el-table-column>
     <el-table-column
-      label="状态"
-      width="120">
+      label="状态">
       <template scope="scope">
-        <span style="margin-left: 10px">{{ scope.row.status }}</span>
+        <span>{{ scope.row.status }}</span>
       </template>
     </el-table-column>
     <el-table-column
-      label="查看"
-      width="90">
+      label="查看">
       <template scope="scope">
         <el-popover trigger="hover" placement="top">
-          <p>序号: {{ scope.row.count }}</p>
-          <p>账号编号: {{ scope.row.accountNum }}</p>
-          <p>账号名称: {{ scope.row.account }}</p>
-          <p>支付通道: {{ scope.row.payment }}</p>
-          <p>状态: {{ scope.row.status }}</p>
+          <p v-if="scope.row.count">序号: {{ scope.row.count }}</p>
+          <p v-if="scope.row.accountNum">账号编号: {{ scope.row.accountNum }}</p>
+          <p v-if="scope.row.account">账号名称: {{ scope.row.account }}</p>
+          <p v-if="scope.row.payment">支付通道: {{ scope.row.payment }}</p>
+          <p v-if="scope.row.status">状态: {{ scope.row.status }}</p>
+          <p v-if="scope.row.lastEdit">最后编辑人: {{ scope.row.lastEdit }}</p>
+          <p v-if="scope.row.lastDate">最后编辑事件: {{ scope.row.lastDate }}</p>
+          <p v-if="scope.row.useStore">使用中的门店: {{ scope.row.useStore }}</p>
           <div slot="reference" class="name-wrapper">
             <el-tag>查看</el-tag>
           </div>
@@ -84,9 +75,10 @@
           account: '支付宝',
           payment: '易极付',
           status: '开户成功',
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
+          thirdPartCode: '美团-89898989',
+          lastEdit: '王小虎',
+          lastDate: '2016-05-04 04:33:23',
+          useStore: '天河一店 天河二店'
         }, {
           count: 1,
           accountNum: 11233,
@@ -127,3 +119,10 @@
     }
   }
 </script>
+<style>
+  div.cell{
+    text-align: center;
+  }
+
+</style>
+

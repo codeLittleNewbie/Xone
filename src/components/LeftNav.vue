@@ -4,25 +4,10 @@
 
       <el-submenu index="1">
         <template slot="title">支付管理</template>
-        <el-submenu index="1-1">
-          <template slot="title">账户列表</template>
-          <router-link to="/iPayment/accountList/newCount1">
-            <el-menu-item index="1-1-1">新增账户(已开户)</el-menu-item>
-          </router-link>
-          <router-link to="/iPayment/accountList/newCount2">
-            <el-menu-item index="1-1-2">新增账户(开户申请)</el-menu-item>
-          </router-link>
-          <router-link to="/iPayment/accountList/newCount3">
-            <el-menu-item index="1-1-3">新增账户(美团开户申请)</el-menu-item>
-          </router-link>
-          <router-link to="/iPayment/accountList/newCount4">
-            <el-menu-item index="1-1-4">查看账户</el-menu-item>
-          </router-link>
-        </el-submenu>
-        <el-submenu index="1-2">
-          <template slot="title">下发记录</template>
-          <el-menu-item index="1-2-1">新增下发</el-menu-item>
-        </el-submenu>
+        <router-link to="/iPayment/accountList">
+          <el-menu-item index="1-1">账户列表</el-menu-item>
+        </router-link>
+        <router-link to="/iPayment/issuedRecord"><el-menu-item index="1-2-1">新增下发</el-menu-item></router-link>
       </el-submenu>
 
       <el-submenu index="2">

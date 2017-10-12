@@ -50,19 +50,24 @@
     methods: {
       loginOut: function () {
         this.$router.push("/login")
-      }
+      },
+      ...mapActions([
+        'topHeight'
+      ])
     },
     created() {
     },
     mounted(){
       let top = this.$refs.getTop;
       this.height = top.clientHeight;
-      this.$emit('topHeight',this.height)
+      // this.$emit('topHeight',this.height)
+
+      this.topHeight(this.height);
+      // this.$store.dispatch('topHeight',this.height);
+      // console.log(this.topHeight);
     },
     computed: {
-      ...mapActions([
-        'topHeight'
-      ])
+
     }
   }
 

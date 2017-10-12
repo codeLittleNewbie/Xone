@@ -8,4 +8,7 @@ export default {
   click({commit}){
     commit(types.CLICK);
   },
+  topHeight({commit}, height){
+    commit(types.TOPHEIGHT,height);
+  }
 }

@@ -102,7 +102,6 @@
         <el-menu-item index="10-1">开户(移动端)</el-menu-item>
       </el-submenu>
 
-
       <!--后期加上-->
       <!--<el-submenu v-for="(value,index) in leftList" :key="index">
         <template slot="title">{{value.name}}</template>
@@ -115,6 +114,8 @@
   </div>
 </template>
 <script>
+  import {mapGetters} from 'vuex'
+
   export default {
     data() {
       return {
@@ -172,12 +173,18 @@
       }
     },
     mounted(){
-      this.ListHeight = window.innerHeight - 80;
+      this.ListHeight = window.innerHeight - this.getTopHeight;
+    },
+    computed: {
+      ...mapGetters([
+          'getTopHeight'
+      ])
     }
   }
 </script>
 <style>
   #xoMenu{
     overflow-y: scroll;
+    overflow-x: hidden;
   }
 </style>

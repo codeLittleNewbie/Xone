@@ -5,5 +5,6 @@
 export const CLICK = 'CLICK';
 export const MINUS = 'MINUS';
 
+export const TOPHEIGHT = 'TOPHEIGHT';
 
 

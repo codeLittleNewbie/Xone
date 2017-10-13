@@ -2,14 +2,12 @@
   <div id="xoMenu" :style="{height:ListHeight+'px'}">
     <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" theme="dark">
 
-      <el-submenu index="1">
+     <!-- <el-submenu index="1">
         <template slot="title">支付管理</template>
         <router-link to="/iPayment/accountList">
-          <el-menu-item index="1-1" @click="NavPathChange(['支付管理','账户列表'])">账户列表</el-menu-item>
+          <el-menu-item index="1-1">账户列表</el-menu-item>
         </router-link>
-        <router-link to="/iPayment/issuedRecord">
-          <el-menu-item index="1-2-1" @click="NavPathChange(['支付管理','新增下发'])">新增下发</el-menu-item>
-        </router-link>
+        <router-link to="/iPayment/issuedRecord"><el-menu-item index="1-2-1">新增下发</el-menu-item></router-link>
       </el-submenu>
 
       <el-submenu index="2">
@@ -87,21 +85,18 @@
       <el-submenu index="10">
         <template slot="title">移动端</template>
         <el-menu-item index="10-1">开户(移动端)</el-menu-item>
-      </el-submenu>
+      </el-submenu>-->
 
       <!--后期加上-->
-      <!--<el-submenu v-for="(value,index) in leftList" :key="index">
+      <el-submenu v-for="(value,index1) in leftList" :index=index1.toString()>
         <template slot="title">{{value.name}}</template>
-        <el-submenu v-for="(item,count) in value" v-if="subMenuOrItem(item)" index="count+1">
-          <template slot="title">{{item.name}}</template>
-        </el-submenu>
-        <el-menu-item v-for="(item,count) in value" v-if="subMenuOrItem(item)" index="count+2">{{item.name}}</el-menu-item>
-      </el-submenu>-->
+        <router-link v-for="(item,index2) in value.children" :to=item.route><el-menu-item :index=formatNum(index1,index2)>{{item.name}}</el-menu-item></router-link>
+      </el-submenu>
     </el-menu>
   </div>
 </template>
 <script>
-  import {mapGetters, mapActions} from 'vuex'
+  import {mapGetters} from 'vuex'
 
   export default {
     data() {
@@ -112,24 +107,11 @@
             children: [
               {
                 name: '账户列表',
-                children: [
-                  {
-                    name: '新增账户(已开户)',
-                    route: '/iPayment/countList/newCount1'
-                  },
-                  {
-                    name: '新增账户(开户)',
-                    route: '/iPayment/countList/newCount2'
-                  }
-                ]
+                route: '/iPayment/accountList',
               },
               {
                 name: '下发记录',
-                children: [
-                  {
-                    name: '新增记录'
-                  }
-                ]
+                route: '/iPayment/issuedRecord',
               }
             ]
           },
@@ -138,13 +120,66 @@
             children: [
               {
                 name: '门店列表',
-                /*children: [
-                  {
-                    name: '新增门店',
-                    route:　''
-                  }
-                ]*/
+                route: '/'
+              },
+              {
+                name: '门店组',
+                route: '/'
               }
+            ]
+          },
+          {
+            name: '统计报表',
+            children: [
+              {
+                name: '交易列表',
+                route: '/'
+              },
+              {
+                name: '交易统计',
+                route: '/'
+              },
+              {
+                name: '结算记录',
+                route: '/'
+              },
+              {
+                name: '差异账单查询',
+                route: '/'
+              },
+              {
+                name: '对账单',
+                route: '/'
+              }
+            ]
+          },
+          {
+            name: '基础设置',
+            children: [
+              {
+                name: '商家信息',
+                route: '/'
+              },
+              {
+                name: '备用账户切换配置',
+                route: '/'
+              },
+              {
+                name: '批量设置',
+                route: '/'
+              },
+              {
+                name: '支付方式',
+                route: '/'
+              },
+              {
+                name: '支付通道',
+                route: '/'
+              },
+              {
+                name: '权限管理',
+                route: '/'
+              },
             ]
           }
         ],
@@ -152,28 +187,31 @@
       }
     },
     methods: {
-      ...mapActions([
-        'NavPathChange'
-      ]),
       handleOpen(key, keyPath) {
         console.log(key, keyPath);
       },
       handleClose(key, keyPath) {
         console.log(key, keyPath);
+      },
+      formatNum(num1,num2){
+        console.log(num1, num2);
+        var str1 = num1.toString();
+        var str2 = num2.toString();
+        return str1 + '-' + str2;
       }
     },
-    mounted() {
+    mounted(){
       this.ListHeight = window.innerHeight - this.getTopHeight;
     },
     computed: {
       ...mapGetters([
-        'getTopHeight'
-      ])
+          'getTopHeight'
+      ]),
     }
   }
 </script>
 <style>
-  #xoMenu {
+  #xoMenu{
     overflow-y: scroll;
     overflow-x: hidden;
   }

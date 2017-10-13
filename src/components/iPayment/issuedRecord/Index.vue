@@ -1,6 +1,6 @@
 <template>
   <div id="issuedRecord">
-    <el-button type="primary" icon="plus">新增下发</el-button>
+    <router-link to="/iPayment/issuedRecord/newIssued"><el-button type="primary" icon="plus">新增下发</el-button></router-link>
     <div style="margin-top: 25px">
       <xo-screen-form></xo-screen-form>
     </div>

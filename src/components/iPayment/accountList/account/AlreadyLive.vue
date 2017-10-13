@@ -4,15 +4,15 @@
       <el-input v-model="ruleForm.accountCode" :disabled="true"></el-input>
     </el-form-item>
 
-    <el-form-item label="第三方编码" required v-for="(value,index) in ruleForm.thirdCodes" :key="index">
+    <el-form-item label="第三方编码" v-for="(value,index) in ruleForm.thirdCodes" :key="index">
       <el-col :span="9">
-        <el-form-item prop="thirdCode">
+        <el-form-item>
           <el-input v-model="value.code1" placeholder="请输入内容"></el-input>
         </el-form-item>
       </el-col>
       <el-col class="line" :span="2" style="text-align: center">-</el-col>
       <el-col :span="9">
-        <el-form-item prop="thirdCode">
+        <el-form-item>
           <el-input v-model="value.code2" placeholder="请输入内容"></el-input>
         </el-form-item>
       </el-col>
@@ -21,6 +21,19 @@
         <el-button icon="minus" type="primary" @click="minThirdCode(index)" v-if="value.isMin"></el-button>
       </el-col>
     </el-form-item>
+
+    <!--<el-form-item label="第三方编码" v-for="(value,index) in ruleForm.thirdCodes" :key="index" prop="thirdCode">
+      &lt;!&ndash;<el-col :span="9">
+          <el-input v-model="value.code1" placeholder="请输入内容"></el-input>
+      </el-col>&ndash;&gt;
+      <el-row>
+        <el-col :span="9">
+          <el-input v-model="value.code1"></el-input>
+        </el-col>
+      </el-row>
+    </el-form-item>-->
+
+
 
     <el-form-item label="账户名称" prop="accountName">
       <el-input v-model="ruleForm.accountName"></el-input>
@@ -91,21 +104,18 @@
           Payment: '',
           Merchants: '',
           caption: '我是说明文字',
-          date1: '',
-          date2: '',
           delivery: false,
-          type: [],
-          resource: '',
-          desc: '',
           payKey: '',
+          thirdCode: '',
           thirdCodes: [
             {
-              code1: 11,
-              code2: 22,
+              code1: '',
+              code2: '',
               isMin: false
             }
           ]
         },
+        input: '',
         rules: {
           accountName: [
             {required: true, message: '请选择账号名称', trigger: 'change'}
@@ -115,7 +125,7 @@
             {min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur'}
           ],
           pay: [
-            {required: true, message: '请选择支付方式', }
+            {required: true, message: '请选择支付方式'}
           ],
           Payment: [
             {required: true, message: '请选择支付通道', trigger: 'change'}
@@ -126,14 +136,9 @@
           payKey: [
             {required: true, message: '请选择商户支付秘钥', trigger: 'change'}
           ],
-
-
-          resource: [
-            {required: true, message: '请选择活动资源', trigger: 'change'}
+          thirdCode: [
+            {required: true, message: '请选择第三方编码', trigger: 'change'}
           ],
-          desc: [
-            {required: true, message: '请填写活动形式', trigger: 'blur'}
-          ]
         },
 
       };
@@ -158,7 +163,6 @@
       },
       minThirdCode(index){
         this.ruleForm.thirdCodes.splice(index,1);
-        // console.log(index);
       }
     }
   }

@@ -2,8 +2,8 @@
   <div id="xoNavPath">
     <el-breadcrumb separator="/">
       <el-breadcrumb-item :to="{ path: '/' }">支付管理</el-breadcrumb-item>
-      <el-breadcrumb-item>账户列表</el-breadcrumb-item>
-      <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">账户列表</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">活动列表</el-breadcrumb-item>
       <!--<el-breadcrumb-item v-for="value in getNavPath">{{value}}</el-breadcrumb-item>-->
     </el-breadcrumb>
   </div>

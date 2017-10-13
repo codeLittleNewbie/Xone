@@ -6,6 +6,7 @@ import Login from '../components/login/Login.vue'
 import Users from '../components/user/Users.vue'
 import Account from '../components/iPayment/accountList/account/Index.vue'
 import Record from '../components/iPayment/issuedRecord/Index.vue'
+import NewIssued from '../components/iPayment/issuedRecord/newIssued/Index.vue'
 
 Vue.use(Router);
 
@@ -24,13 +25,20 @@ export default new Router({
         },
         {
           path: '/iPayment/accountList/account',
+          name: '支付管理/账户列表/新增账户',
           component: Account
         },
         {
-          // 支付管理/新增下发
+          // 支付管理/下发记录
           path: '/iPayment/issuedRecord',
-          name: '支付管理/新增下发',
+          name: '支付管理/下发记录',
           component: Record,
+        },
+        {
+          // 支付管理/新增下发
+          path: '/iPayment/issuedRecord/newIssued',
+          name: '支付管理/下发记录/新增下发',
+          component: NewIssued,
         },
 
 

@@ -194,7 +194,6 @@
         console.log(key, keyPath);
       },
       formatNum(num1,num2){
-        console.log(num1, num2);
         var str1 = num1.toString();
         var str2 = num2.toString();
         return str1 + '-' + str2;

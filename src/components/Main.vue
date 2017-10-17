@@ -24,6 +24,7 @@
   import {mapGetters, mapActions} from 'vuex'
 
   import xoHeader from './Header.vue'
+  import xoHome from './Home.vue'
   import xoNavPath from './NavPath.vue'
   import xoLeftNav from './LeftNav.vue'
 
@@ -47,6 +48,7 @@
       xoHeader,
       xoNavPath,
       xoLeftNav,
+      xoHome
     },
     methods: {
       handleOpen(key, keyPath) {

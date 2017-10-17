@@ -1,6 +1,6 @@
 <template>
   <div id="xoMenu" :style="{height:ListHeight+'px'}">
-    <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" theme="dark">
+    <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" theme="dark" :width="300">
 
      <!-- <el-submenu index="1">
         <template slot="title">支付管理</template>

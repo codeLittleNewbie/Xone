@@ -1,12 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Main from '../components/Main.vue'
+import Home from '../components/Home.vue'
 import IPayment from '../components/iPayment/accountList/Index.vue'
 import Login from '../components/login/Login.vue'
 import Users from '../components/user/Users.vue'
 import Account from '../components/iPayment/accountList/account/Index.vue'
 import Record from '../components/iPayment/issuedRecord/Index.vue'
 import NewIssued from '../components/iPayment/issuedRecord/newIssued/Index.vue'
+import NotFound from '@/components/404/NotFound.vue'
 
 Vue.use(Router);
 
@@ -44,17 +46,6 @@ export default new Router({
 
 
 
-
-        {
-          path: '/login',
-          name: '登陆页',
-          component: Login
-        },
-        {
-          path: '/users',
-          name: '登陆页',
-          component: Users
-        },
       ]
     },
     {
@@ -62,6 +53,18 @@ export default new Router({
     },
     {
       path: '*', redirect: '/login'
-    }
+    },
+    {
+      path: '/login',
+      component: Login,
+      name: '登陆页',
+      hidden: true
+    },
+    {
+      path: '/404',
+      component: NotFound,
+      name: '',
+      hidden: true
+    },
   ]
 })

@@ -8,9 +8,6 @@
       <el-col :span="20" style="overflow-y: scroll">
         <div :style="{height:ListHeight + 'px'}">
           <div class="content">
-            <xo-nav-path></xo-nav-path>
-          </div>
-          <div class="contentMsg">
             <!--路由视图-->
             <router-view></router-view>
           </div>
@@ -68,8 +65,5 @@
 <style scoped lang="less">
   .content {
     padding: 25px;
-  }
-  .contentMsg{
-    padding: 0 25px 25px 25px;
   }
 </style>

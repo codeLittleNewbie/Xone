@@ -173,7 +173,7 @@
               },
               {
                 name: '支付方式',
-                route: '/'
+                route: '/infrastructure/PaymentWay'
               },
               {
                 name: '支付通道',
@@ -216,5 +216,6 @@
   #xoMenu{
     overflow-y: scroll;
     overflow-x: hidden;
+    background-color: #2A3642;
   }
 </style>

@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Main from '../components/Main.vue'
-import Home from '../components/Home.vue'
 import IPayment from '../components/iPayment/accountList/Index.vue'
 import Login from '../components/login/Login.vue'
 import Users from '../components/user/Users.vue'
@@ -13,6 +12,7 @@ import BusinessInfo from '@/components/infrastructure/BusinessInfo/Index.vue'
 import BackupAcc from '@/components/infrastructure/BackupAcc/Index.vue'
 import VolumeSet from '@/components/infrastructure/VolumeSet/Index.vue'
 import NewAdd from '@/components/infrastructure/VolumeSet/NewAdd/Index.vue'
+import PaymentWay from '@/components/infrastructure/PaymentWay/Index.vue'
 
 Vue.use(Router);
 
@@ -23,6 +23,7 @@ export default new Router({
       name: '首页',
       component: Main,
       children:[
+        /**********************支付管理**************************/
         {
           // 支付管理/账户列表
           path: '/iPayment/accountList',
@@ -50,6 +51,7 @@ export default new Router({
 
 
 
+        /**********************基础设置***************************/
         // 基础设置/商家信息
         {
           path: '/infrastructure/BusinessInfo',
@@ -72,7 +74,12 @@ export default new Router({
           path: '/infrastructure/VolumeSet/newAdd',
           name: '基础设置/客户端批量设置/新增门店',
           component: NewAdd
-        }
+        },
+        {
+          path: '/infrastructure/PaymentWay',
+          name: '基础设置/支付方式',
+          component: PaymentWay
+        },
 
 
 
@@ -81,9 +88,9 @@ export default new Router({
     {
       path: '/', redirect: '/users'
     },
-    /*{
+    {
       path: '*', redirect: '/login'
-    },*/
+    },
     {
       path: '/login',
       component: Login,

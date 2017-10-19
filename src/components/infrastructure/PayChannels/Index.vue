@@ -7,7 +7,7 @@
             <xo-nav-path></xo-nav-path>
           </el-col>
           <el-col :span="2" :offset="2">
-            <router-link to="/infrastructure/PaymentWay/NewPayment"><el-button icon="plus" size="small" type="primary">新增支付方式</el-button></router-link>
+            <router-link to="/infrastructure/PayChannels/NewPayChannels"><el-button icon="plus" size="small" type="primary">新增支付通道</el-button></router-link>
           </el-col>
         </el-col>
       </el-row>
@@ -29,8 +29,8 @@
           ></el-table-column>
 
           <el-table-column
-            prop="payName"
-            label="支付名称">
+            prop="payChannels"
+            label="支付通道">
           </el-table-column>
 
           <el-table-column label="操作">
@@ -60,19 +60,19 @@
         tableData: [{
           count: '1',
           payCode: '83789',
-          payName: '支付宝',
+          payChannels: '通联支付',
         },{
           count: '1',
           payCode: '83789',
-          payName: '支付宝',
+          payChannels: '通联支付',
         },{
           count: '1',
           payCode: '83789',
-          payName: '支付宝',
+          payChannels: '通联支付',
         },{
           count: '1',
           payCode: '83789',
-          payName: '支付宝',
+          payChannels: '通联支付',
         }]
       }
     },

@@ -11,10 +11,10 @@
           </el-col>
           <el-form ref="form" :model="form" label-width="0px">
             <el-col :span="24" class="cell">
-              <el-col :span="16">
+              <el-col :span="24">
                 <el-form-item>
-                  <el-col :span="7" >
-                    <el-select v-model="form.value" placeholder="请选择">
+                  <el-col :span="7">
+                    <el-select v-model="form.value" placeholder="--省份--">
                       <el-option
                         v-for="item in form.options"
                         :key="item.value"
@@ -24,7 +24,7 @@
                     </el-select>
                   </el-col>
                   <el-col :span="7" :offset="1">
-                    <el-select v-model="form.value" placeholder="请选择">
+                    <el-select v-model="form.value" placeholder="--城市--">
                       <el-option
                         v-for="item in form.options"
                         :key="item.value"
@@ -34,7 +34,7 @@
                     </el-select>
                   </el-col>
                   <el-col :span="7" :offset="1">
-                    <el-select v-model="form.value" placeholder="请选择">
+                    <el-select v-model="form.value" placeholder="--门店标签--">
                       <el-option
                         v-for="item in form.options"
                         :key="item.value"
@@ -46,41 +46,26 @@
                 </el-form-item>
                 <el-form-item>
                   <el-col :span="16">
-                    <el-input v-model="form.storeInfo" placeholder="请输入门店名称"></el-input>
+                    <el-input v-model="form.storeInfo" placeholder="请输入门店关键字"></el-input>
                   </el-col>
                   <el-col :span="2" :offset="1">
                     <el-button>搜索</el-button>
                   </el-col>
                 </el-form-item>
                 <el-form-item>
-                  <el-col :span="23">
-                    <el-tree
-                      :data="form.data2"
-                      show-checkbox
-                      node-key="id"
-                      :default-expanded-keys="[1, 2, 3]"
-                      :default-checked-keys="[1, 2, 5]"
-                      :props="defaultProps">
-                    </el-tree>
-                  </el-col>
+                  <el-transfer v-model="form.data" :data="form.data2" :titles="['门店','已选门店']"></el-transfer>
                 </el-form-item>
               </el-col>
-              <el-col :span="8">
-                <el-card>
-                  <div class="selectedStore">已选门店</div>
-                  <el-tree
-                    :data="form.data2"
-                    show-checkbox
-                    node-key="id"
-                    :default-expanded-keys="[1, 2, 3]"
-                    :default-checked-keys="[1, 2, 5]"
-                    :props="defaultProps"
-                    style="margin-top: 10px;">
-                  </el-tree>
-                </el-card>
-              </el-col>
-            </el-col>
+            </el-col >
           </el-form>
+          <el-col :span="24">
+            <el-col :span="12" class="flex-jc">
+              <el-button>取消</el-button>
+            </el-col>
+            <el-col :span="12" class="flex-jc">
+              <el-button type="primary">确定</el-button>
+            </el-col>
+          </el-col>
         </el-row>
       </el-card>
     </div>
@@ -93,41 +78,20 @@
     data() {
       return {
         form: {
-          data2: [{
-            id: 1,
-            label: '一级 1',
-            children: [{
-              id: 4,
-              label: '二级 1-1',
-              children: [{
-                id: 9,
-                label: '三级 1-1-1'
-              }, {
-                id: 10,
-                label: '三级 1-1-2'
-              }]
-            }]
-          }, {
-            id: 2,
-            label: '一级 2',
-            children: [{
-              id: 5,
-              label: '二级 2-1'
-            }, {
-              id: 6,
-              label: '二级 2-2'
-            }]
-          }, {
-            id: 3,
-            label: '一级 3',
-            children: [{
-              id: 7,
-              label: '二级 3-1'
-            }, {
-              id: 8,
-              label: '二级 3-2'
-            }]
-          }],
+          data: [2], // 已选门店key
+          data2: [
+            {
+              key: 10,
+              label: '门店组1',
+            },
+            {
+              key: 2,
+              label: '门店组2',
+            },
+            {
+              key: 3,
+              label: '门店组3',
+            }],
           options: [{
             value: '选项1',
             label: '黄金糕'
@@ -145,7 +109,8 @@
             label: '北京烤鸭'
           }],
           value: '',
-          storeInfo: ''
+          storeInfo: '',
+
         }
       }
     },
@@ -157,6 +122,9 @@
     },
     components: {
       xoNavPath
+    },
+    methods: {
+
     }
   }
 </script>

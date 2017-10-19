@@ -177,7 +177,7 @@
               },
               {
                 name: '支付通道',
-                route: '/'
+                route: '/infrastructure/PayChannels'
               },
               {
                 name: '权限管理',

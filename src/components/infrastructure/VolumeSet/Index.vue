@@ -15,8 +15,12 @@
           </el-form-item>
 
           <el-form-item label="模式">
-            <div><el-radio class="radio" v-model="form.mode" label="1">在线模式（POS联网时选择该模式）</el-radio></div>
-            <div><el-radio class="radio" v-model="form.mode" label="2">离线模式（POS离线时选择该模式）</el-radio></div>
+            <div>
+              <el-radio class="radio" v-model="form.mode" label="1">在线模式（POS联网时选择该模式）</el-radio>
+            </div>
+            <div>
+              <el-radio class="radio" v-model="form.mode" label="2">离线模式（POS离线时选择该模式）</el-radio>
+            </div>
           </el-form-item>
 
           <el-form-item label="扫码开发票">
@@ -47,27 +51,22 @@
           <el-form-item label="选择门店">
             <el-row>
               <el-col :span="24" class="smallContentMsg">
-                <el-radio class="radio" v-model="form.shop" label="1">是</el-radio>
-                <el-radio class="radio" v-model="form.shop" label="2">否</el-radio>
-                <router-link to="/infrastructure/VolumeSet/newAdd"><el-button size="small">新增</el-button></router-link>
+                <el-radio class="radio" v-model="form.shop" label="1">全部门店</el-radio>
+                <el-radio class="radio" v-model="form.shop" label="2">部分门店</el-radio>
+                <router-link to="/infrastructure/VolumeSet/newAdd">
+                  <el-button size="small">新增</el-button>
+                </router-link>
               </el-col>
-              <el-col :span="24">
+              <el-col :span="24" v-if="form.shop == 2">
                 <el-card>
-                  <el-tree
-                    :data="form.data2"
-                    show-checkbox
-                    node-key="id"
-                    :default-expanded-keys="[1, 2, 3]"
-                    :default-checked-keys="[1, 2, 5]"
-                    :props="defaultProps">
-                  </el-tree>
+                  <el-tree :data="form.data" :props="defaultProps" @node-click="handleNodeClick" :default-expanded-keys="[2]" node-key="id"></el-tree>
                 </el-card>
               </el-col>
             </el-row>
           </el-form-item>
 
           <el-form-item>
-            <el-button type="primary" @click="onSubmit">立即创建</el-button>
+            <el-button type="primary" @click="onSubmit">保存</el-button>
           </el-form-item>
 
         </el-form>
@@ -90,43 +89,12 @@
           url: '',
           code: '1',
           shop: '1',
-
-
-          data2: [{
-            id: 1,
-            label: '一级 1',
-            children: [{
-              id: 4,
-              label: '二级 1-1',
-              children: [{
-                id: 9,
-                label: '三级 1-1-1'
-              }, {
-                id: 10,
-                label: '三级 1-1-2'
-              }]
-            }]
-          }, {
-            id: 2,
-            label: '一级 2',
-            children: [{
-              id: 5,
-              label: '二级 2-1'
-            }, {
-              id: 6,
-              label: '二级 2-2'
-            }]
-          }, {
-            id: 3,
-            label: '一级 3',
-            children: [{
-              id: 7,
-              label: '二级 3-1'
-            }, {
-              id: 8,
-              label: '二级 3-2'
-            }]
-          }]
+          data: [
+            {label: '一级 1',id: 2,children:[{label: '二级 2',id: 11}]},
+            {label: '一级 2',id: 1},
+            {label: '一级 3',id: 3},
+            {label: '一级 4',id: 4},
+          ]
         }
       }
     },
@@ -142,6 +110,9 @@
     methods: {
       onSubmit() {
         console.log('submit!');
+      },
+      handleNodeClick(data) {
+        console.log(data);
       }
     }
   }
@@ -150,7 +121,8 @@
   .contentMsg {
     padding: 0 0 25px 0;
   }
-  .smallContentMsg{
+
+  .smallContentMsg {
     padding: 0 0 20px 0;
   }
 </style>

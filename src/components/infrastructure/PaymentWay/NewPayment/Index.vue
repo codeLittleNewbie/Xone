@@ -98,7 +98,6 @@
             this.form.domains.splice(index, 1)
           }
         }
-
       },
     }
   }

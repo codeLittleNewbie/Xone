@@ -62,7 +62,7 @@
             <el-col :span="12" class="flex-jc">
               <el-button>取消</el-button>
             </el-col>
-            <el-col :span="12" class="flex-jc">
+            <el-col :span="12">
               <el-button type="primary">确定</el-button>
             </el-col>
           </el-col>

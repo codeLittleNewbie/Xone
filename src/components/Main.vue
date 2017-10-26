@@ -5,11 +5,11 @@
       <el-col :span="4">
         <xo-left-nav></xo-left-nav>
       </el-col>
-      <el-col :span="20" style="overflow-y: scroll">
+      <el-col :span="20" id="getContentHeight" style="overflow-y: scroll">
         <div :style="{height:ListHeight + 'px'}">
           <div class="content">
             <!--路由视图-->
-            <router-view></router-view>
+            <router-view v-loading="getLoadingStatus"></router-view>
           </div>
         </div>
       </el-col>
@@ -35,7 +35,8 @@
     },
     computed: {
       ...mapGetters([
-          'getTopHeight'
+          'getTopHeight',
+          'getLoadingStatus'
       ]),
       getMsg(){
         return this.msg;

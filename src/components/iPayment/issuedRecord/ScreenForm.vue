@@ -11,22 +11,30 @@
       </el-table-column>
 
       <el-table-column
-        prop="paymentMethod"
         label="支付方式"
-        width="93">
+        width="103"
+      >
+        <template scope="scope">
+          <div style="margin-left: 10px" v-for="item in scope.row.paymentMethod">{{ item }}</div>
+        </template>
       </el-table-column>
 
 
       <el-table-column
-        prop="payment"
         label="支付通道"
-        width="93">
+        width="103">
+        <template scope="scope">
+          <div style="margin-left: 10px" v-for="item in scope.row.payment">{{ item }}</div>
+        </template>
       </el-table-column>
 
       <el-table-column
-        prop="account"
         label="账户"
-        width="131">
+        width="144">
+        label="支付通道">
+        <template scope="scope">
+          <div style="margin-left: 10px" v-for="item in scope.row.account">{{ item }}</div>
+        </template>
       </el-table-column>
 
       <el-table-column
@@ -96,18 +104,18 @@
       return {
         tableData: [{
           count: 1,
-          paymentMethod: ['支付宝', ' 微信支付'],
-          payment: ['易极付', ' 通联'],
-          account: ['炳胜(马场店)', ' 炳胜(兴盛路店)'],
+          paymentMethod: ['支付宝', '微信支付'],
+          payment: ['易极付', '通联'],
+          account: ['炳胜(马场店)', '炳胜(兴盛路店)'],
           date: '2017-9-26  12:00:00',
           lastEdit: '张三',
           state: '成功',
           executionTime: '已完成'
         }, {
           count: 1,
-          paymentMethod: ['支付宝', ' 微信支付'],
-          payment: ['易极付', ' 通联'],
-          account: ['炳胜(马场店)', ' 炳胜(兴盛路店)'],
+          paymentMethod: ['支付宝', '微信支付'],
+          payment: ['易极付', '通联'],
+          account: ['炳胜(马场店)', '炳胜(兴盛路店)'],
           date: '2017-9-26  12:00:00',
           lastEdit: '张三',
           state: '待执行',
@@ -115,9 +123,9 @@
         },
           {
             count: 1,
-            paymentMethod: ['支付宝', ' 微信支付'],
-            payment: ['易极付', ' 通联'],
-            account: ['炳胜(马场店)', ' 炳胜(兴盛路店)'],
+            paymentMethod: ['支付宝', '微信支付'],
+            payment: ['易极付', '通联'],
+            account: ['炳胜(马场店)', '炳胜(兴盛路店)'],
             date: '2016-05-02',
             lastEdit: '张三',
             executionTime: '2017-3-34 12:32:32',
@@ -125,9 +133,9 @@
           },
           {
             count: 1,
-            paymentMethod: ['支付宝', ' 微信支付'],
-            payment: ['易极付', ' 通联'],
-            account: ['炳胜(马场店)', ' 炳胜(兴盛路店)'],
+            paymentMethod: ['支付宝', '微信支付'],
+            payment: ['易极付', '通联'],
+            account: ['炳胜(马场店)', '炳胜(兴盛路店)'],
             date: '2016-05-02',
             lastEdit: '张三',
             executionTime: '2017-3-34 12:32:32',
@@ -155,6 +163,9 @@
   }
 </script>
 <style scoped>
+  div.cell{
+    text-align: center;
+  }
   p{
     padding: 10px 0 10px 10px;
   }

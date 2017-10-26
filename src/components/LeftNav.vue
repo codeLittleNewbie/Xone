@@ -123,11 +123,11 @@
             children: [
               {
                 name: '门店列表',
-                route: '/'
+                route: '/storeManage/storeList'
               },
               {
                 name: '门店组',
-                route: '/'
+                route: '/storeManage/storeGroup'
               }
             ]
           },
@@ -136,23 +136,23 @@
             children: [
               {
                 name: '交易列表',
-                route: '/'
+                route: '/report/transactionList'
               },
               {
                 name: '交易统计',
-                route: '/'
+                route: '/report/transactionCount'
               },
               {
                 name: '结算记录',
-                route: '/'
+                route: '/report/settlementRecord'
               },
               {
                 name: '差异账单查询',
-                route: '/'
+                route: '/report/billQuery'
               },
               {
                 name: '对账单',
-                route: '/'
+                route: '/report/accountStatement'
               }
             ]
           },

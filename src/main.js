@@ -10,6 +10,7 @@ import utility from './components/utility'
 
 // 样式导入
 import 'element-ui/lib/theme-default/index.css'
+import 'font-awesome/css/font-awesome.css'
 
 
 // 修改vue的原型对象
@@ -21,7 +22,20 @@ Vue.config.productionTip = false;
 Vue.use(element);
 
 Object.keys(utility).forEach(function (item) {
-  Vue.component(`${item}`,utility[item])
+  Vue.component(`${item}`, utility[item])
+});
+
+// 路由切换加载提示
+router.beforeEach(function (to, from, next) {
+  store.commit('UPDATELOADINGSTATUS', {isLoading: true})
+  setTimeout(function () {
+    next()
+  }, 1000);
+
+});
+
+router.afterEach(function (to) {
+  store.commit('UPDATELOADINGSTATUS', {isLoading: false})
 });
 
 new Vue({
@@ -29,5 +43,5 @@ new Vue({
   router,
   store,
   template: '<App/>',
-  components: { App }
+  components: {App}
 });
